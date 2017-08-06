@@ -1,3 +1,10 @@
+.undernavbar{
+  background-color: #e7e7e7;
+}
+.undernavbar #menu-menu-principal{
+  float: none !important;
+  margin-left: 30%;
+}
 .carousel .item {
   height: 500px;
   background-size:     cover;

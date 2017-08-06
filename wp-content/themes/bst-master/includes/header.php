@@ -36,17 +36,17 @@
 			<div class="menu-menu-principal-container">
 				<ul id="menu-menu-principal" class="nav navbar-nav navbar-right">
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href=""><img src="<?php echo content_url(); ?>/uploads/2017/08/OTRA-picto.png"/>
+							<a href="<?php echo get_category_link(2); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/OTRA-picto.png"/>
 								<span>On the road again</span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href=""><img src="<?php echo content_url(); ?>/uploads/2017/08/EBL-picto.png"/>
+							<a href="<?php echo get_category_link(3); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/EBL-picto.png"/>
 								<span>El boco loco</span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href=""><img src="<?php echo content_url(); ?>/uploads/2017/08/SL-picto.png"/>
+							<a href="<?php echo get_category_link(4); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/SL-picto.png"/>
 								<span>Slow living</span>
 							</a>
 						</li>

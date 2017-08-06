@@ -13,7 +13,7 @@ if (! isset($content_width))
 	$content_width = 600;
 
 function bst_excerpt_readmore() {
-	return '&nbsp; <a href="'. get_permalink() . '">' . '&hellip; ' . __('Read more', 'bst') . ' <i class="glyphicon glyphicon-arrow-right"></i>' . '</a></p>';
+	return '&nbsp; ' . '&hellip; ' . __('Voir la suite', 'bst') . ' <i class="glyphicon glyphicon-arrow-right"></i>' . '</p>';
 }
 add_filter('excerpt_more', 'bst_excerpt_readmore');
 
@@ -21,7 +21,7 @@ add_filter('excerpt_more', 'bst_excerpt_readmore');
 
 function bst_browser_body_class( $classes ) {
 	global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
-	
+
 	if($is_lynx) $classes[] = 'lynx';
 	elseif($is_gecko) $classes[] = 'gecko';
 	elseif($is_opera) $classes[] = 'opera';
@@ -48,9 +48,9 @@ function bst_browser_body_class( $classes ) {
 	        }
 	}
 	else $classes[] = 'unknown';
- 
+
 	if( $is_iphone ) $classes[] = 'iphone';
- 
+
 	return $classes;
 }
 add_filter( 'body_class', 'bst_browser_body_class' );
