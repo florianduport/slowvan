@@ -145,10 +145,10 @@ if ( ! function_exists( 'swell_lite_enqueue_scripts' ) ) {
 	function swell_lite_enqueue_scripts() {
 
 		// Enqueue Styles.
-		wp_enqueue_style( 'swell-lite-style', get_stylesheet_uri() );
+		/**wp_enqueue_style( 'swell-lite-style', get_stylesheet_uri() );
 		wp_enqueue_style( 'swell-lite-style-mobile', get_template_directory_uri() . '/css/style-mobile.css', array( 'swell-lite-style' ), '1.0' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array( 'swell-lite-style' ), '1.0' );
-
+*/
 		// Enqueue Scripts.
 		wp_enqueue_script( 'swell-lite-fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '20130729' );
 		wp_enqueue_script( 'swell-lite-hover', get_template_directory_uri() . '/js/hoverIntent.js', array( 'jquery' ), '20130729' );

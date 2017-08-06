@@ -1,0 +1,31 @@
+@font-face {
+	font-family: "Market";
+	src: url('../fonts/Market_Deco.ttf');
+}
+.navbar{
+  margin-bottom: 0;
+  height: 90px;
+  background: #ffffff;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-shadow: 1px 1px #cccccc;
+  font-family: "Market";
+}
+.menu-item{
+  font-size: 24px;
+  margin-top: 12px;
+}
+.menu-item img{
+  height: 36px;
+}
+.menu-item span{
+  top: 0px;
+  vertical-align: middle;
+}
+#global-body{
+  background: #f1f1f1;
+}
+.navbar-brand img{
+  height: 50px;
+  margin-top: 5px;
+}

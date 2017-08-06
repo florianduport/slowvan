@@ -1,0 +1,65 @@
+.carousel .item {
+  height: 500px;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center;
+
+}
+.item img {
+    top: 0;
+    left: 0;
+    height:500px;
+}
+.carousel{
+  box-shadow: 5px 5px 5px #888888;
+}
+.carousel-control{
+  width: 5%;
+  display: none;
+}
+.carousel:hover .carousel-control{
+  display:block;
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+#carouselOTRA .item h1{
+  font-size: 4.875em;
+  text-shadow: 1px 1px #f1f1f1;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+#carouselOTRA .item > div,
+#carouselSL .item > div
+{
+    position: absolute;
+    width: 100%;
+}
+#carouselEBL .item > div > div,
+.carousel .item > div{
+  bottom: 0;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+}
+#carouselOTRA .item > div + span{
+  display: none;
+}
+.overlay-slider{
+  background-color: #000;
+  opacity: 0.5;
+  width: 100%;
+  height: 150px;
+  bottom: 0;
+  position: absolute;
+}
+.halfItem{
+  width: 50%;
+  left:0;
+  height: 100%;
+}
+.halfItem + .halfItem{
+  margin-left:50%;
+}

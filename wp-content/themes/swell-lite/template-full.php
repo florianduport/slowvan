@@ -33,7 +33,7 @@ get_header(); ?>
 
 				<!-- BEGIN .postarea full -->
 				<div class="postarea full">
-
+					<h1>OK</h1>
 					<?php get_template_part( 'content/loop', 'page' ); ?>
 
 				<!-- END .postarea full -->

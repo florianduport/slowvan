@@ -19,7 +19,9 @@
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php echo bloginfo( 'pingback_url' ); ?>">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<?php wp_head(); ?>
 
 </head>
@@ -64,31 +66,7 @@
 
 <?php } ?>
 
-<!-- BEGIN #header -->
-<div id="header">
 
-	<?php $header_image = get_header_image(); if ( ! empty( $header_image ) ) { ?>
-
-		<div id="custom-header" style="background-image: url(<?php header_image(); ?>);">
-
-			<?php get_template_part( 'content/logo', 'title' ); ?>
-
-			<img class="hide-img" src="<?php header_image(); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo() ); ?>" />
-
-		</div>
-
-	<?php } else { ?>
-
-		<div id="custom-header" class="non-active">
-
-			<?php get_template_part( 'content/logo', 'title' ); ?>
-
-		</div>
-
-	<?php } ?>
-
-<!-- END #header -->
-</div>
 
 <?php if ( has_nav_menu( 'main-menu' ) ) { ?>
 
