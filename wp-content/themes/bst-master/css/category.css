@@ -5,8 +5,11 @@
   float: none !important;
   margin-left: 30%;
 }
-.carousel .item {
-  height: 500px;
+.carousel .item{
+    height: 500px;
+}
+.carousel .item,
+.halfItem {
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center;
@@ -30,11 +33,12 @@
     background-image: none
 }
 
-#carouselOTRA .item h1{
+.carousel .item h1{
   font-size: 2.875em;
   text-shadow: 1px 1px #f1f1f1;
   font-weight: 800;
   text-transform: uppercase;
+  font-family: "Market";
 }
 #carouselOTRA .item > div,
 #carouselSL .item > div

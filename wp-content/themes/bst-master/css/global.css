@@ -29,7 +29,26 @@
   height: 50px;
   margin-top: 5px;
 }
-
+.menu-item span{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.menu-item span.activeCat{
+	border-top : 1px solid;
+	border-bottom: 1px solid;
+}
+.navbar:not(.undernavbar) + div{
+		margin-top: 58px;
+}
+.undernavbar{
+	margin-top: 90px;
+}
+@media(min-width: 1150px){
+	#global-body.smallCat{
+		max-width: 45%;
+		margin-left:27.5%;
+	}
+}
 @media (max-width: 1150px) {
     .navbar-header {
         float: none;

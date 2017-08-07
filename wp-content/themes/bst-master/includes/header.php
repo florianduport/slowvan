@@ -19,7 +19,7 @@
 </div>
 <![endif]-->
 
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top">
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -32,22 +32,44 @@
 				<img src="<?php echo content_url(); ?>/uploads/2017/08/slowvan-picto.png"/>
 			</a>
     </div>
+
+		<?php
+			$category = get_category(get_query_var('cat'));
+			$category_id = $category->cat_ID;
+
+			$categories = get_categories();
+			$catOTRA = null;
+			$catEBL = null;
+			$ĉatSL = null;
+
+			foreach($categories as $cat){
+				if($cat->cat_ID == 2){
+					$catOTRA = $cat;
+				} else if($cat->cat_ID == 3){
+					$catEBL = $cat;
+				} else if($cat->cat_ID == 4){
+					$catSL = $cat;
+				}
+			}
+
+		?>
+
     <div class="collapse navbar-collapse" id="navbar">
 			<div class="menu-menu-principal-container">
 				<ul id="menu-menu-principal" class="nav navbar-nav navbar-right">
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href="<?php echo get_category_link(2); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/OTRA-picto.png"/>
-								<span>On the road again</span>
+							<a href="<?php echo get_category_link($catOTRA->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/OTRA-picto.png"/>
+								<span class="<?php if(cat_is_ancestor_of($catOTRA->cat_ID, $category_id) or $category_id == $catOTRA->cat_ID) echo("activeCat") ?>"><?php echo $catOTRA->name; ?></span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href="<?php echo get_category_link(3); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/EBL-picto.png"/>
-								<span>El boco loco</span>
+							<a href="<?php echo get_category_link($catEBL->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/EBL-picto.png"/>
+								<span class="<?php if(cat_is_ancestor_of($catEBL->cat_ID, $category_id) or $category_id == $catEBL->cat_ID) echo("activeCat") ?>"><?php echo $catEBL->name; ?></span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-							<a href="<?php echo get_category_link(4); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/SL-picto.png"/>
-								<span>Slow living</span>
+							<a href="<?php echo get_category_link($catSL->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/SL-picto.png"/>
+								<span class="<?php if(cat_is_ancestor_of($catSL->cat_ID, $category_id) or $category_id == $catSL->cat_ID) echo("activeCat") ?>"><?php echo $catSL->name; ?></span>
 							</a>
 						</li>
 				</ul>

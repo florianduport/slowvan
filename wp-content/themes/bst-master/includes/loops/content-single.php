@@ -9,7 +9,7 @@ The Single Posts Loop
     <article role="article" id="post_<?php the_ID()?>" <?php post_class()?>>
 
         <section>
-            <?php the_content()?>
+            <?php the_content('', TRUE)?>
             <?php wp_link_pages(); ?>
         </section>
     </article>

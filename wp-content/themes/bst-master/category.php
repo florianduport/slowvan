@@ -1,7 +1,14 @@
 <?php get_template_part('includes/header'); ?>
 
-<nav class="navbar navbar-default navbar-static-top undernavbar">
+<?php
 
+$category = get_category(get_query_var('cat'));
+$category_id = $category->cat_ID;
+
+$isEBL = $category_id == 3;
+
+if(cat_is_ancestor_of(2, $category_id) or $category_id == 2) : ?>
+<nav class="navbar navbar-default navbar-static-top undernavbar">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -15,21 +22,22 @@
 				<ul id="menu-menu-principal" class="nav navbar-nav navbar-right">
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
 							<a href="<?php echo get_category_link(10); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/vantrip-picto.png"/>
-								<span>Van trip</span>
+								<span class="<?php if(cat_is_ancestor_of(10, $category_id) or $category_id == 10) echo("activeCat") ?>">Van trip</span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
 							<a href="<?php echo get_category_link(11); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/avion-picto.png"/>
-								<span>Away trip</span>
+								<span class="<?php if(cat_is_ancestor_of(11, $category_id) or $category_id == 11) echo("activeCat") ?>">Away trip</span>
 							</a>
 						</li>
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
 							<a href="<?php echo get_category_link(12); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/citytrip-picto.png"/>
-								<span>City guide</span>
+								<span class="<?php if(cat_is_ancestor_of(12, $category_id) or $category_id == 12) echo("activeCat") ?>">City guide</span>
 							</a>
 						</li>
 				</ul>
 			</div>
+<?php endif; ?>
         <?php
            /*wp_nav_menu( array(
                 'theme_location'    => 'navbar-right',
@@ -42,7 +50,8 @@
     </div><!-- /.navbar-collapse -->
 
 </nav>
-<div id="global-body">
+
+<div id="global-body" class="<?php if($isEBL){ echo("smallCat"); } ?>">
 
   <div id="carouselOTRA" class="carousel slide" data-ride="carousel" data-interval="10000">
     <div class="carousel-inner">

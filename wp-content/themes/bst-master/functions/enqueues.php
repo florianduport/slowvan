@@ -11,6 +11,8 @@ function bst_enqueues() {
 
 	wp_register_style('global-css', get_template_directory_uri() . '/css/global.css', false, null);
 	wp_enqueue_style('global-css');
+	wp_register_style('animate-css', get_template_directory_uri() . '/css/animate.css', false, null);
+		wp_enqueue_style('animate-css');
 
 	if(is_page_template("template-home.php")){
 		  	wp_register_style('home-css', get_template_directory_uri() . '/css/home.css');
