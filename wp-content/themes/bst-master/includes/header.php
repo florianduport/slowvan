@@ -61,12 +61,12 @@
 							<a href="<?php echo get_category_link($catOTRA->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/OTRA-picto.png"/>
 								<span class="<?php if(cat_is_ancestor_of($catOTRA->cat_ID, $category_id) or $category_id == $catOTRA->cat_ID) echo("activeCat") ?>"><?php echo $catOTRA->name; ?></span>
 							</a>
-						</li>
+						</li><!--
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
 							<a href="<?php echo get_category_link($catEBL->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/EBL-picto.png"/>
 								<span class="<?php if(cat_is_ancestor_of($catEBL->cat_ID, $category_id) or $category_id == $catEBL->cat_ID) echo("activeCat") ?>"><?php echo $catEBL->name; ?></span>
 							</a>
-						</li>
+						</li>-->
 						<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
 							<a href="<?php echo get_category_link($catSL->cat_ID); ?>"><img src="<?php echo content_url(); ?>/uploads/2017/08/SL-picto.png"/>
 								<span class="<?php if(cat_is_ancestor_of($catSL->cat_ID, $category_id) or $category_id == $catSL->cat_ID) echo("activeCat") ?>"><?php echo $catSL->name; ?></span>

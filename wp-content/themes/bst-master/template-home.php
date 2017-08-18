@@ -67,7 +67,7 @@ $mypostsEBL = get_posts( $argsEBL );
 $postEBL0 = $mypostsEBL[0];
 setup_postdata($postEBL0);
 ?>
-
+<!--
   <div id="carouselEBL" class="carousel" data-interval="8000">
     <div class="carousel-inner">
       <div class="item active">
@@ -88,11 +88,11 @@ setup_postdata($postEBL0);
             </a>
           </div>
         </div>
-
+-->
 <?php
 $postEBL1 = $mypostsEBL[1];
 setup_postdata($postEBL1);
-?>
+?><!--
         <div class="align-right halfItem" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postEBL1->ID)) ?>')">
           <div class="overlay-slider"></div>
           <div  class="width100">
@@ -111,12 +111,17 @@ setup_postdata($postEBL1);
         </div>
         <a href="<?php echo get_category_link(3); ?>">
           <div class="align-right moreInfoItem" style="background-color:white;">
-            <span style="margin-top: 50px;"><img src="<?php echo content_url(); ?>/uploads/2017/08/boco-plus.png" style="width: 95px; height: 135px; margin-top: 85%;"/></span>
+            <p>La suite des recettes</p>
+              <img src="<?php echo content_url(); ?>/uploads/2017/08/curvedArrow.png" style="width: 80px; height: 115px;"/>
+            <span style="margin-top: 50px;">
+                <img src="<?php echo content_url(); ?>/uploads/2017/08/boco-plus.png" style="width: 80px; height: 115px; margin-top: 100%;"/>
+            </span>
+            <p>C'est par ici</p>
           </div>
         </a>
       </div>
     </div>
-  </div>
+  </div>-->
 
 <?php
 global $postSL;

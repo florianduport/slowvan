@@ -70,7 +70,8 @@
   margin-left: 90%;
   height: 100%;
   width: 10%;
-  background:repeating-linear-gradient(-45deg, #c92941, #c92941 5px, white 5px, white 10px);
+  background:#fff;
+  border: 1px solid red;
 }
 .moreInfoItem span{
   margin-top: 100%;

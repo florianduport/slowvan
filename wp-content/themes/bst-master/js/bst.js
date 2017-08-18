@@ -14,6 +14,11 @@
 
 		// You can put your own code in here
 
+		$(".moreInfoItem span img").hover(function(){
+			if(!$(this).hasClass("animated"))
+			$(this).addClass("tada animated");
+		});
+
 		$(window).scroll(function() {
 			$(".carousel .item h1").each(function(){
 				var el = $(this);
@@ -25,7 +30,7 @@
 		    if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
 		        // The element is visible, do something
 					if(!$(this).hasClass("animated"))
-					$(this).addClass("fadeInDown animated")
+					$(this).addClass("fadeInDown animated");
 		    }
 		    else {
 		        // The element is not visible, do something else
