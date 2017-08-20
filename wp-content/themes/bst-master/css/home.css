@@ -29,9 +29,11 @@
 .carousel .item h1{
   font-size: 2.875em;
   text-shadow: 1px 1px #f1f1f1;
-  font-weight: 800;
   text-transform: uppercase;
   font-family: "Market";
+}
+#carouselSL{
+  border-top: 5px solid #fff;
 }
 #carouselOTRA .item > div,
 #carouselSL .item > div
@@ -84,7 +86,6 @@
   width: 72%;
   margin-left: 15%;
   font-size: 16px;
-  font-weight: bold;
 }
 .carousel .item a{
   text-decoration: none;

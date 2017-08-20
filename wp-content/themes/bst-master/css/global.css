@@ -43,6 +43,32 @@
 .undernavbar{
 	margin-top: 90px;
 }
+.tiled-gallery{
+	margin: 20px 0 20px !important;
+}
+#wpcomm .avatar{
+  height: 54px !important;
+  width: 54px !important;
+}
+.null-instagram-feed{
+	width: auto !important;
+	padding-left: 90px;
+}
+.null-instagram-feed h4{
+	font-family: "Market";
+}
+.instagram-pics li{
+	margin: 5px;
+}
+.site-footer li{
+	float: left;
+}
+p{
+	-webkit-margin-before: 1em !important;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
 @media(min-width: 1150px){
 	#global-body.smallCat{
 		max-width: 45%;

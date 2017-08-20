@@ -132,29 +132,29 @@ class themePacific_Jetpack_Tiled_Gallery {
 
 		return '';
 	}
-	
+
 	public function vt_resize( $attach_id = null, $img_url = null, $width, $height, $crop = false ) {
 
 	// this is an attachment, so we have the ID
 	if ( $attach_id ) {
-	
+
 		$image_src = wp_get_attachment_image_src( $attach_id, 'full' );
 		$file_path = get_attached_file( $attach_id );
-	
+
 	// this is not an attachment, let's use the image url
 	} else if ( $img_url ) {
-		
+
 		$file_path = parse_url( $img_url );
 		$file_path = ltrim( $file_path['path'], '/' );
 		//$file_path = rtrim( ABSPATH, '/' ).$file_path['path'];
-		
+
 		$orig_size = getimagesize( $file_path );
-		
+
 		$image_src[0] = $img_url;
 		$image_src[1] = $orig_size[0];
 		$image_src[2] = $orig_size[1];
 	}
-	
+
 	$file_info = pathinfo( $file_path );
 	$extension = '.'. $file_info['extension'];
 
@@ -171,26 +171,26 @@ class themePacific_Jetpack_Tiled_Gallery {
 		if ( file_exists( $cropped_img_path ) ) {
 
 			$cropped_img_url = str_replace( basename( $image_src[0] ), basename( $cropped_img_path ), $image_src[0] );
-			
+
 			$vt_image = array (
 				'url' => $cropped_img_url,
 				'width' => $width,
 				'height' => $height
 			);
-			
+
 			return $vt_image;
 		}
 
 		// crop = false
 		if ( $crop == false ) {
-		
+
 			// calculate the size proportionaly
 			$proportional_size = wp_constrain_dimensions( $image_src[1], $image_src[2], $width, $height );
-			$resized_img_path = $no_ext_path.'-'.$proportional_size[0].'x'.$proportional_size[1].$extension;			
+			$resized_img_path = $no_ext_path.'-'.$proportional_size[0].'x'.$proportional_size[1].$extension;
 
 			// checking if the file already exists
 			if ( file_exists( $resized_img_path ) ) {
-			
+
 				$resized_img_url = str_replace( basename( $image_src[0] ), basename( $resized_img_path ), $image_src[0] );
 
 				$vt_image = array (
@@ -198,24 +198,24 @@ class themePacific_Jetpack_Tiled_Gallery {
 					'width' => $new_img_size[0],
 					'height' => $new_img_size[1]
 				);
-				
+
 				return $vt_image;
 			}
 		}
 
 		// no cached files - let's finally resize it
-		$tp_image = wp_get_image_editor( $file_path );  
+		$tp_image = wp_get_image_editor( $file_path );
  		if ( ! is_wp_error( $tp_image ) ) {
 			$tp_image->resize( $width, $height, $crop );
 			$new_img_array = $tp_image->save();
 		}
 		$new_img_size = getimagesize( $new_img_array['path'] );
 		$new_img = str_replace( basename( $image_src[0] ), basename(  $new_img_array['path'] ), $image_src[0] );
-		
- 
 
-		
-		
+
+
+
+
 
 		// resized output
 		$vt_image = array (
@@ -223,7 +223,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 			'width' => $new_img_size[0],
 			'height' => $new_img_size[1]
 		);
-		
+
 		return $vt_image;
 	}
 
@@ -233,7 +233,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 		'width' => $image_src[1],
 		'height' => $image_src[2]
 	);
-	
+
 	return $vt_image;
 }
 
@@ -258,7 +258,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 					$orig_file = wp_get_attachment_url( $image->ID );
 					$link = $this->get_attachment_link( $image->ID, $orig_file );
 
- 					$img_src = $this->vt_resize(  $image->ID,'' , $image->width, $image->height, true ); 
+ 					$img_src = $this->vt_resize(  $image->ID,'' , $image->width, $image->height, true );
 					$output .= '<div class="tiled-gallery-item tiled-gallery-item-' . esc_attr( $size ) . '"><a href="' . esc_url( $link ) . '"><img ' . $this->generate_carousel_image_args( $image ) . ' src="' . esc_url( $img_src['url'] ) . '" width="' . esc_attr( $image->width ) . '" height="' . esc_attr( $image->height ) . '" align="left" title="' . esc_attr( $image_title ) . '" /></a>';
 
 					if ( $this->atts['grayscale'] == true ) {
@@ -298,7 +298,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 				$img_size = $remainder_size;
 			else
 				$img_size = $size;
- 
+
 			$img_src = $this->vt_resize(  $image->ID,'' , $img_size, $img_size, true );
  			$orig_file = wp_get_attachment_url( $image->ID );
 			$link = $this->get_attachment_link( $image->ID, $orig_file );
@@ -721,4 +721,3 @@ class themePacific_Jetpack_Tiled_Gallery_Group {
 }
 
 add_action( 'init', array( 'themePacific_Jetpack_Tiled_Gallery', 'init' ) );
-
