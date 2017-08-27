@@ -10,7 +10,7 @@ The Single Posts Loop
 
         <section>
             <?php the_content('', TRUE)?>
-            <?php wp_link_pages(); ?>
+            <?php //wp_link_pages(); ?>
         </section>
     </article>
 <?php comments_template('/includes/loops/comments.php'); ?>
