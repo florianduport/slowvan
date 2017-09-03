@@ -36,7 +36,8 @@
 #wpcomm hr{background-color:rgba(0,0,0,0.1);border:0 none;height:1px;margin:10px auto}
 #wpcomm .avatar{padding:1px;margin:0 auto;float:none;display:inline;width:100%;height:auto; border:1px solid #ddd; border-radius:50%;}
 #wpcomm .wc-comment-text{text-align:left;padding-bottom:5px;line-height:22px;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}
-#wpcomm .wc-comment-text img{max-width:90%;height:auto}
+#wpcomm .wc-comment-text img{max-width:99%!important;height:auto; max-height:1000px;}
+#wpcomm .wc-comment-text iframe{max-width:99%!important;}
 #wpcomm .wc-comment-header{margin-bottom:7px;height:30px;}
 #wpcomm .wc-comment-author{font-size:16px;width:40%;float:left;white-space:normal;text-align:left; padding:6px 0px 2px 15px;}
 #wpcomm .wc-comment-author a{font-size:16px;white-space:normal;text-decoration:none;line-height:25px}
@@ -157,7 +158,8 @@
 #wpcomm .wc-field-textarea .commentTextMaxLength{display:none;font-size:11px;color:#aaa;position:absolute;top:3px;right:5px}
 #wpcomm .wc-field-textarea .wpdiscuz-quicktags-enabled .commentTextMaxLength{top:39px}
 #wpcomm .wc-field-textarea .commentTextMaxLength.left10{color:#f00}
-#wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap{padding:0;margin:0;background:transparent;}
+#wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap {padding:0;margin:0;background:transparent;}
+#wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap textarea {margin-bottom : 0 !important;}
 #wpcomm #wpdiscuz-edit-form .wpdiscuz-textarea-wrap{padding:0;margin:0;background:transparent;position: relative;border: none;}
 #wpcomm .wc-field-textarea .wpdiscuz-textarea-foot{border:0;padding:3px 0;width:97%;text-align:right;line-height:14px;margin:0 auto;border-top:1px dotted #ddd}
 #wpcomm .wc-field-textarea .wpdiscuz-textarea-foot .wpdiscuz-button{line-height:14px;display:inline-block;min-width:20px;width:auto;height:20px;padding:0;margin:2px 3px;cursor:pointer;border:0;float:none}
@@ -311,47 +313,22 @@
 #wpcomm table.editcomment input[type=checkbox].wpd-field, 
 #wpcomm table.editcomment input[type=radio].wpd-field { width:auto; height:auto; display:inline-block; padding:0px; line-height:13px; vertical-align:baseline; margin:0px 2px 0px 0px; }
 #wpcomm table.editcomment label.wpd-field-label{ width:auto; clear:both; height:auto; display:inline-block; float:none; padding:0px; line-height:20px; font-size:13px; margin:0px 15px 0px 0px; vertical-align:top; }
-
 .wpdiscuz-edit-form-wrap{ display:block; margin:10px;}
 .wpd-cursor-pointer{cursor: pointer;}
 #wpcomm .wpdiscuz-item input[type=checkbox]:focus{line-height: 1;}
-.wpdiscuz-post-rating-wrap.wpd-custom-field{
-    display: flex;
-    flex-wrap: wrap;
-}
-.wpdiscuz-post-rating-wrap.wpd-custom-field > [class ^= wpdiscuz-post-rating-wrap-custom_field]{
-    flex-basis: 25%;
-    margin-bottom: 10px;
-}
+.wpdiscuz-post-rating-wrap.wpd-custom-field{display: flex;flex-wrap: wrap;}
+.wpdiscuz-post-rating-wrap.wpd-custom-field > [class ^= wpdiscuz-post-rating-wrap-custom_field]{flex-basis: 25%;margin-bottom: 10px;}
 
 /* SPOILER */
-#wpcomm .wpdiscuz-spoiler-wrap{
-    background-color: #eee;
-    border: 1px solid #555;
-    border-style: dashed;
-    margin:  5px 0;
-}
-
-#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler{
-    padding: 5px;
-    cursor: pointer;
-}
-
-#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler .fa{
-    margin: 0 5px;
-}
-
-#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler-content{
-    display: none;
-    font-style: italic;
-    padding: 5px;
-}
-
+#wpcomm .wpdiscuz-spoiler-wrap{background-color: #eee;border: 1px solid #555;border-style: dashed;margin:  5px 0;}
+#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler{padding: 5px;cursor: pointer;}
+#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler .fa{margin: 0 5px;}
+#wpcomm .wpdiscuz-spoiler-wrap .wpdiscuz-spoiler-content{display: none;font-style: italic;padding: 5px;}
+#wpcomm .wpdiscuz-textarea-wrap textarea:focus{border: none!important;box-shadow: none;}
+#wpcomm .wpdiscuz-front-actions .wpdiscuz-sort-buttons{display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;justify-content: flex-end;-ms-align-items: center;align-items: center;}
+#wpcomm .wpdiscuz-front-actions .wpdiscuz-sort-buttons .wpdiscuz-sort-button{padding-top: 0;}
 @media screen and (max-width: 1024px){
-    .wpdiscuz-post-rating-wrap.wpd-custom-field > [class ^= wpdiscuz-post-rating-wrap-custom_field]{
-        flex-basis: 33%;
-        margin-bottom: 10px;
-    }
+    .wpdiscuz-post-rating-wrap.wpd-custom-field > [class ^= wpdiscuz-post-rating-wrap-custom_field]{flex-basis: 33%;margin-bottom: 10px;}
 }
 @media screen and (max-width:650px){
     #wpcomm .wpdiscuz-subscribe-form-option{width:100%!important;padding:0!important}

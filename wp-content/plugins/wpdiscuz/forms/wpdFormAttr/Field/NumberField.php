@@ -65,8 +65,8 @@ class NumberField extends Field {
         <?php
     }
 
-    public function editCommentHtml($key, $value, $data,$comment) {
-        if($comment->comment_parent && !$data['is_show_sform']){
+    public function editCommentHtml($key, $value, $data, $comment) {
+        if ($comment->comment_parent && !$data['is_show_sform']) {
             return '';
         }
         $html = '<tr><td class="first">';
@@ -82,8 +82,8 @@ class NumberField extends Field {
         return $html;
     }
 
-    public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId,$isMainForm) {
-        if(!$isMainForm && !$args['is_show_sform']){
+    public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId, $isMainForm) {
+        if (!$isMainForm && !$args['is_show_sform']) {
             return;
         }
         $hasIcon = $args['icon'] ? true : false;
@@ -107,17 +107,17 @@ class NumberField extends Field {
     }
 
     public function frontHtml($value, $args) {
-        if(!$args['is_show_on_comment']){
+        if (!$args['is_show_on_comment']) {
             return '';
         }
         $html = '<div class="wpd-custom-field wpd-cf-text">';
-        $html .= '<div class="wpd-cf-label">' . $args['name'] . '</div> <div class="wpd-cf-value"> ' . apply_filters('wpdiscuz_custom_field_number', $value , $args) . '</div>';
+        $html .= '<div class="wpd-cf-label">' . $args['name'] . '</div> <div class="wpd-cf-value"> ' . apply_filters('wpdiscuz_custom_field_number', $value, $args) . '</div>';
         $html .= '</div>';
         return $html;
     }
 
     public function validateFieldData($fieldName, $args, $options, $currentUser) {
-        if(!$this->isCommentParentZero() && !$args['is_show_sform']){
+        if (!$this->isCommentParentZero() && !$args['is_show_sform']) {
             return '';
         }
         $value = filter_input(INPUT_POST, $fieldName, FILTER_SANITIZE_NUMBER_INT);
@@ -125,13 +125,13 @@ class NumberField extends Field {
             wp_die(__($args['name'], 'wpdiscuz') . ' : ' . __('field is required!', 'wpdiscuz'));
         }
         $value = intval($value);
-        if (is_int($args['min']) &&  $value < $args['min']) {
+        if (is_int($args['min']) && $value < $args['min']) {
             wp_die(__($args['name'], 'wpdiscuz') . ' : ' . __('value can not be less than', 'wpdiscuz') . ' ' . $args['min']);
         }
         if (is_int($args['max']) && $value > $args['max']) {
             wp_die(__($args['name'], 'wpdiscuz') . ' : ' . __('value can not be more than', 'wpdiscuz') . ' ' . $args['max']);
         }
-        
+
         return $value;
     }
 
@@ -145,31 +145,37 @@ class NumberField extends Field {
         if (isset($data['desc'])) {
             $cleanData['desc'] = trim(strip_tags($data['desc']));
         }
-
         if (isset($data['values'])) {
             $values = array_filter(explode("\n", trim(strip_tags($data['values']))));
             foreach ($values as $value) {
                 $cleanData['values'][] = trim($value);
             }
         }
-
         if (isset($data['icon'])) {
             $cleanData['icon'] = trim(strip_tags($data['icon']));
         }
         if (isset($data['required'])) {
             $cleanData['required'] = intval($data['required']);
         }
-
         if (isset($data['min']) && trim($data['min']) != '') {
             $cleanData['min'] = intval($data['min']);
         } else {
             $cleanData['min'] = '';
         }
-
         if (isset($data['max']) && trim($data['max']) != '') {
             $cleanData['max'] = intval($data['max']);
         } else {
             $cleanData['max'] = '';
+        }
+        if (isset($data['is_show_on_comment'])) {
+            $cleanData['is_show_on_comment'] = intval($data['is_show_on_comment']);
+        } else {
+            $cleanData['is_show_on_comment'] = 0;
+        }
+        if (isset($data['is_show_sform'])) {
+            $cleanData['is_show_sform'] = intval($data['is_show_sform']);
+        } else {
+            $cleanData['is_show_sform'] = 0;
         }
 
         return wp_parse_args($cleanData, $this->fieldDefaultData);

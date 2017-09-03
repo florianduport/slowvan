@@ -24,15 +24,14 @@ class WpdiscuzHelper {
         $this->optionsSerialized = $optionsSerialized;
         $this->dbManager = $dbManager;
         $this->wpdiscuzForm = $wpdiscuzForm;
-        add_filter('the_champ_login_interface_filter', array(&$this,'wpDiscuzSuperSocializerLogin'), 15, 2);
+        add_filter('the_champ_login_interface_filter', array(&$this, 'wpDiscuzSuperSocializerLogin'), 15, 2);
     }
-    
-    
-    public function filterKses(){
+
+    public function filterKses() {
         $allowedtags = array();
         $allowedtags['br'] = array();
         $allowedtags['a'] = array('href' => array(), 'title' => array(), 'target' => array(), 'rel' => array(), 'download' => array(), 'hreflang' => array(), 'media' => array(), 'type' => array());
-        $allowedtags['i'] = array('class'=>array());
+        $allowedtags['i'] = array('class' => array());
         $allowedtags['b'] = array();
         $allowedtags['u'] = array();
         $allowedtags['strong'] = array();
@@ -53,7 +52,16 @@ class WpdiscuzHelper {
         $allowedtags['del'] = array('datetime' => array());
         $allowedtags['span'] = array('id' => array(), 'class' => array(), 'title' => array());
         $allowedtags['pre'] = array();
-        return apply_filters('wpdiscuz_allowedtags',$allowedtags);
+        return apply_filters('wpdiscuz_allowedtags', $allowedtags);
+    }
+
+    public function filterCommentText($commentContent) {
+        kses_remove_filters();
+        remove_filter( 'comment_text', 'wp_kses_post' );
+	if ( ! current_user_can( 'unfiltered_html' ) ) {
+		$commentContent = wp_kses($commentContent, $this->filterKses());
+	}
+        return $commentContent;
     }
 
 // Set timezone
@@ -304,7 +312,7 @@ class WpdiscuzHelper {
             ?>
             <div id="comments" style="width: 0;height: 0;clear: both;margin: 0;padding: 0;"></div>
             <div id="respond" class="comments-area">
-            <?php } else { ?>
+        <?php } else { ?>
                 <div id="comments" class="comments-area">
                     <div id="respond" style="width: 0;height: 0;clear: both;margin: 0;padding: 0;"></div>
                     <?php
@@ -387,32 +395,42 @@ class WpdiscuzHelper {
 
             public function wpDiscuzSuperSocializerLogin($html, $theChampLoginOptions) {
                 global $wp_current_filter;
-                if (in_array('comment_form_top',$wp_current_filter)  && isset($theChampLoginOptions['providers']) && is_array($theChampLoginOptions['providers']) && count($theChampLoginOptions['providers']) > 0) {
-                        $html = '<style type="text/css">#wpcomm .wc_social_plugin_wrapper .wp-social-login-connect-with_by_the_champ{float:left;font-size:13px;padding:5px 7px 0 0;text-transform:uppercase}#wpcomm .wc_social_plugin_wrapper ul.wc_social_login_by_the_champ{list-style:none outside none!important;margin:0!important;padding-left:0!important}#wpcomm .wc_social_plugin_wrapper ul.wc_social_login_by_the_champ .theChampLogin{width:24px!important;height:24px!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ{list-style:none outside none!important;margin:0!important;padding-left:0!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ .theChampLogin{width:24px!important;height:24px!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ li{float:right!important}#wpcomm .wc_social_plugin_wrapper .theChampFacebookButton{ display:block!important; }#wpcomm .theChampTwitterButton{background-position:-4px -68px!important}#wpcomm .theChampGoogleButton{background-position:-36px -2px!important}#wpcomm .theChampVkontakteButton{background-position:-35px -67px!important}#wpcomm .theChampLinkedinButton{background-position:-34px -34px!important;}.theChampCommentingTabs #wpcomm li{ margin:0px 1px 10px 0px!important; }</style>';
-                        $html .= '<div class="wp-social-login-widget">';
-                        $html .= '<div class="wp-social-login-connect-with_by_the_champ">' . $this->optionsSerialized->phrases['wc_connect_with'] . ':</div>';
-                        $html .= '<div class="wp-social-login-provider-list">';
-                        $html .= '<ul class="wc_social_login_by_the_champ">';
-                        foreach ($theChampLoginOptions['providers'] as $provider) {
-                            $html .= '<li><i ';
-                            if ($provider == 'google') {
-                                $html .= 'id="theChamp' . ucfirst($provider) . 'Button" ';
-                            }
-                            $html .= 'class="theChampLogin theChamp' . ucfirst($provider) . 'Background theChamp' . ucfirst($provider) . 'Login" ';
-                            $html .= 'alt="Login with ';
-                            $html .= ucfirst($provider);
-                            $html .= '" title="Login with ';
-                            if ($provider == 'live') {
-                                $html .= 'Windows Live';
-                            } else {
-                                $html .= ucfirst($provider);
-                            }
-                            $html .= '" onclick="theChampCommentFormLogin = true; theChampInitiateLogin(this)" >';
-                            $html .= '<ss style="display:block" class="theChampLoginSvg theChamp' . ucfirst($provider) . 'LoginSvg"></ss></i></li>';
+                if (in_array('comment_form_top', $wp_current_filter) && isset($theChampLoginOptions['providers']) && is_array($theChampLoginOptions['providers']) && count($theChampLoginOptions['providers']) > 0) {
+                    $html = '<style type="text/css">#wpcomm .wc_social_plugin_wrapper .wp-social-login-connect-with_by_the_champ{float:left;font-size:13px;padding:5px 7px 0 0;text-transform:uppercase}#wpcomm .wc_social_plugin_wrapper ul.wc_social_login_by_the_champ{list-style:none outside none!important;margin:0!important;padding-left:0!important}#wpcomm .wc_social_plugin_wrapper ul.wc_social_login_by_the_champ .theChampLogin{width:24px!important;height:24px!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ{list-style:none outside none!important;margin:0!important;padding-left:0!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ .theChampLogin{width:24px!important;height:24px!important}#wpcomm .wc-secondary-forms-social-content ul.wc_social_login_by_the_champ li{float:right!important}#wpcomm .wc_social_plugin_wrapper .theChampFacebookButton{ display:block!important; }#wpcomm .theChampTwitterButton{background-position:-4px -68px!important}#wpcomm .theChampGoogleButton{background-position:-36px -2px!important}#wpcomm .theChampVkontakteButton{background-position:-35px -67px!important}#wpcomm .theChampLinkedinButton{background-position:-34px -34px!important;}.theChampCommentingTabs #wpcomm li{ margin:0px 1px 10px 0px!important; }</style>';
+                    $html .= '<div class="wp-social-login-widget">';
+                    $html .= '<div class="wp-social-login-connect-with_by_the_champ">' . $this->optionsSerialized->phrases['wc_connect_with'] . ':</div>';
+                    $html .= '<div class="wp-social-login-provider-list">';
+                    $html .= '<ul class="wc_social_login_by_the_champ">';
+                    foreach ($theChampLoginOptions['providers'] as $provider) {
+                        $html .= '<li><i ';
+                        if ($provider == 'google') {
+                            $html .= 'id="theChamp' . ucfirst($provider) . 'Button" ';
                         }
-                        $html .= '</ul><div class="wpdiscuz_clear"></div></div></div>';
+                        $html .= 'class="theChampLogin theChamp' . ucfirst($provider) . 'Background theChamp' . ucfirst($provider) . 'Login" ';
+                        $html .= 'alt="Login with ';
+                        $html .= ucfirst($provider);
+                        $html .= '" title="Login with ';
+                        if ($provider == 'live') {
+                            $html .= 'Windows Live';
+                        } else {
+                            $html .= ucfirst($provider);
+                        }
+                        $html .= '" onclick="theChampCommentFormLogin = true; theChampInitiateLogin(this)" >';
+                        $html .= '<ss style="display:block" class="theChampLoginSvg theChamp' . ucfirst($provider) . 'LoginSvg"></ss></i></li>';
+                    }
+                    $html .= '</ul><div class="wpdiscuz_clear"></div></div></div>';
                 }
                 return $html;
+            }
+
+            public function getAuthorPostsUrl($author_id, $author_nicename = '') {
+                $authorURL = '';
+                $post_types = apply_filters('wpdiscuz_author_post_types', array('post'));
+                if (count_user_posts($author_id, $post_types)) {
+                    return get_author_posts_url($author_id, $author_nicename);
+                }
+                $authorURL = apply_filters('author_link', $authorURL, $author_id, $author_nicename);
+                return $authorURL;
             }
 
         }

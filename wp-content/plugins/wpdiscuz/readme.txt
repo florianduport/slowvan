@@ -1,9 +1,9 @@
-=== Wordpress Comments Plugin - wpDiscuz ===
+=== WordPress Comments Plugin - wpDiscuz ===
 Contributors: gVectors Team
-Tags: wordpress comments, ajax comments, ajax, custom form, custom fields, live update, live comments, realtime chat, chat, realtime commenting, Lazy load, Lazy load comments, mobile commenting, post comments, advanced comment, comments box, community, discussion, discuss, disqus, discuz, Disqus alternative, Livefyre alternative, Jetpack comments alternative, Facebook comments alternative, comment form, commenting, reply, comments, better comments, discussions, comment notifications, comment template, activity, comment author, comment system, redirect, comment redirect, first commenter, email commenting, social login, boost comments, native comments
+Tags: comment, comments, ajax comments, custom comment form, custom comment field
 Requires at least: 3.8.0
 Tested up to: 4.8
-Stable tag: 4.0.8
+Stable tag: 4.0.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,43 @@ Support Forum: https://gvectors.com/forum/
 
 == Changelog ==
 
+= 4.0.14 =
+
+* Fixed Bug: Use backslash symbol in comment textarea: '\'
+* Fixed Bug: Loose custom field data on comment editing
+
+IMPORTANT:
+
+- If you have JetPack installed please deactivate Jetpack comments, it affects wpDiscuz
+- If you have a Cache Plugin, please delete all caches after wpDiscuz update.
+- If you use CDN and found some issue please purge it.
+- If your server PHP version is lower than 5.4, [please change it to hogher](https://wordpress.org/support/topic/wpdiscuz-4-requires-php-5-4-and-higher/)
+
+= 4.0.13 =
+
+Fixed Bug: CSS changes and Style issues
+
+= 4.0.12 =
+
+* Fixed Bug: Facebook share button conflict with Social Login buttons
+* Fixed Bug: Problem with Twitter share button
+* Fixed Bug: Unable to change some options in custom fields (phone number, etc...)
+
+= 4.0.11 =
+
+* Fixed Bug: Parse error: syntax error on some servers
+
+= 4.0.10 =
+
+* Fixed Bug: captcha setting reseted on update
+
+= 4.0.9 =
+
+* Fixed Bug: Subscription doesn't work when replying from dashboard
+* Fixed Bug: Wrong subscription confirmation link on second comment subscription
+* Fixed Bug: Comments sorting problem if comment sorting type is set "older".
+* Fixed Bug: Design issue with phrase tabs.
+
 = 4.0.8 =
 
 * Changed: Keep displaying comments under moderation for comment author (doesn't hide after refreshing page)
@@ -147,13 +184,6 @@ Support Forum: https://gvectors.com/forum/
 * Fixed Bug: Undefined variable notice in comment form 
 * Wordpress 4.8 compatibility
 
-
-IMPORTANT:
-
-- If you have JetPack installed please deactivate Jetpack comments, it affects wpDiscuz
-- If you have a Cache Plugin, please delete all caches after wpDiscuz update.
-- If you use CDN and found some issue please purge it. 
-- If your server PHP version is lower than 5.4, [please change it to higher](https://wordpress.org/support/topic/wpdiscuz-4-requires-php-5-4-and-higher/)
 
 = 4.0.7 =
 

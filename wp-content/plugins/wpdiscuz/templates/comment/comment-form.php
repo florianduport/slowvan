@@ -19,6 +19,7 @@ if (!function_exists('wpdiscuz_close_divs')) {
         }
         return $html;
     }
+
 }
 
 $current_user = wp_get_current_user();
@@ -100,7 +101,7 @@ if (!post_password_required($post->ID)) {
         $form = $wpdiscuz->wpdiscuzForm->getForm($post->ID);
         $formCustomCss = $form->getCustomCSS();
         if ($formCustomCss) {
-            echo '<style type="text/css">'. $formCustomCss . '</style>';
+            echo '<style type="text/css">' . $formCustomCss . '</style>';
         }
         ?>
         <h3 id="wc-comment-header"><?php echo $form->getHeaderText(); ?></h3>
@@ -200,11 +201,7 @@ if (!post_password_required($post->ID)) {
             $wpdiscuz->wpdiscuzForm->renderFrontForm($commentsCount, $current_user);
             do_action('comment_form_after');
             do_action('wpdiscuz_comment_form_after', $post, $current_user, $commentsCount);
-            ?>
-            
-
-        <?php } else { ?>
-            <?php
+        } else {
             if ($commentsCount > 0) {
                 $wpdiscuz->helper->superSocializerFix();
             } else {
@@ -283,8 +280,7 @@ if (!post_password_required($post->ID)) {
                 <?php if ($commentsCount) { ?>
                     <?php if ($wpdiscuz->optionsSerialized->showPluginPoweredByLink) { ?>
                         <div class="by-wpdiscuz">
-                            <span id="awpdiscuz" onclick='javascript:document.getElementById("bywpdiscuz").style.display = "inline";
-                                                    document.getElementById("awpdiscuz").style.display = "none";'>
+                            <span id="awpdiscuz" onclick='javascript:document.getElementById("bywpdiscuz").style.display = "inline";document.getElementById("awpdiscuz").style.display = "none";'>
                                 <img alt="wpdiscuz" src="<?php echo plugins_url(WPDISCUZ_DIR_NAME . '/assets/img/plugin-icon/icon_info.png'); ?>"  align="absmiddle" class="wpdimg"/>
                             </span>&nbsp;
                             <a href="http://wpdiscuz.com/" target="_blank" id="bywpdiscuz" title="wpDiscuz v<?php echo get_option(WpdiscuzCore::OPTION_SLUG_VERSION); ?> - Supercharged native comments">wpDiscuz</a>
@@ -296,4 +292,3 @@ if (!post_password_required($post->ID)) {
         <div class="wpdiscuz-loading-bar <?php echo ($current_user->ID) ? 'wpdiscuz-loading-bar-auth' : 'wpdiscuz-loading-bar-unauth'; ?>"><img class="wpdiscuz-loading-bar-img" alt="<?php _e('wpDiscuz', 'wpdiscuz'); ?>" src="<?php echo plugins_url(WPDISCUZ_DIR_NAME . '/assets/img/loading.gif'); ?>" width="32" height="25" /></div>
         <?php
     }
-    ?>

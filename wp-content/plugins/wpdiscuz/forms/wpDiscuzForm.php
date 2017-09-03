@@ -284,7 +284,7 @@ class wpDiscuzForm implements wpdFormConst {
             $postType = get_post_type($postID);
             if (key_exists($postID, $this->formPostRel)) {
                 $formID = $this->formPostRel[$postID];
-            } elseif (key_exists($postType, $this->formContentTypeRel)) {
+            } elseif (is_string($postType) && key_exists($postType, $this->formContentTypeRel)) {
                 $tempContentTypeRel = $this->formContentTypeRel[$postType];
                 $defaultFormID = array_shift($tempContentTypeRel);
                 $lang = get_locale();

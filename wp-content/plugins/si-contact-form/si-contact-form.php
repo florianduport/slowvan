@@ -8,7 +8,7 @@ Author URI: http://www.642weather.com/weather/scripts.php
 Text Domain: si-contact-form
 Domain Path: /languages
 License: GPLv2 or later
-Version: 4.0.54
+Version: 4.0.55
 */
 
 /*
@@ -40,7 +40,7 @@ if ( strpos(strtolower($_SERVER['SCRIPT_NAME']),strtolower(basename(__FILE__))) 
 /********************
  * Global constants
  ********************/
-define( 'FSCF_VERSION', '4.0.53' );
+define( 'FSCF_VERSION', '4.0.55' );
 define( 'FSCF_BUILD', '180');		// Used to force load of latest .js files
 define( 'FSCF_FILE', __FILE__ );	               // /path/to/wp-content/plugins/si-contact-form/si-contact-form.php
 define( 'FSCF_PATH', plugin_dir_path(__FILE__) );  // /path/to/wp-content/plugins/si-contact-form/

@@ -10,6 +10,45 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<?php wp_head(); ?>
+	<?php
+		$category = get_category(get_query_var('cat'));
+		$category_id = $category->cat_ID;
+		if(get_post_type() == "post")
+		{
+			if(is_category())
+			{
+				if($category->name == "fr"){
+					echo '<link rel="canonical" href="'.get_home_url().'" />';
+				}
+
+				$lang = "en";
+				$currentLang = "fr";
+				if(strpos(get_permalink(), "/en/") !== false){
+					$lang = "fr";
+					$currentLang = "en";
+				}
+				echo '<link rel="alternate" hreflang="'.$lang.'" href="'.str_replace('/'.$currentLang.'/', '/'.$lang.'/', get_category_link($category_id)).'"/>';
+				echo '<link rel="alternate" hreflang="'.$currentLang.'" href="'.get_category_link($category_id).'"/>';
+			}
+			else
+			{
+				$custom_fields = get_post_custom(get_the_ID());
+				$my_custom_field = $custom_fields['other_lang'];
+				foreach ( $my_custom_field as $key => $value ) {
+					if($value != null && $value != ""){
+						$lang = "en";
+						$currentLang = "fr";
+						if(strpos($value, "fr/") !== false){
+							$lang = "fr";
+							$currentLang = "en";
+						}
+						echo '<link rel="alternate" hreflang="'.$lang.'" href="'.get_site_url().'/'.$value.'"/>';
+						echo '<link rel="alternate" hreflang="'.$currentLang.'" href="'.get_permalink().'"/>';
+					}
+				}
+			}
+		}
+	?>
 </head>
 <body <?php body_class(); ?>>
 
@@ -34,8 +73,6 @@
     </div>
 
 		<?php
-			$category = get_category(get_query_var('cat'));
-			$category_id = $category->cat_ID;
 
 			$categories = get_categories();
 			$catOTRA = null;
@@ -51,6 +88,7 @@
 					$catSL = $cat;
 				}
 			}
+
 
 		?>
 

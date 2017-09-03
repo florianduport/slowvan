@@ -35,7 +35,7 @@ class WpdiscuzEmailHelper {
             } else {
                 $confirmData = $this->dbManager->addEmailNotification($postId, $postId, $email, $subscriptionType, 0);
                 if ($confirmData) {
-                    $success = $this->confirmEmailSender($postId, $email) ? 1 : -1;
+                    $success = $this->confirmEmailSender($confirmData['id'], $confirmData['activation_key'], $postId, $email) ? 1 : -1;
                     if ($success < 0) {
                         $this->dbManager->unsubscribe($confirmData['id'], $confirmData['activation_key']);
                     }
@@ -47,10 +47,10 @@ class WpdiscuzEmailHelper {
         exit();
     }
 
-    public function confirmEmailSender($postId, $email) {
+    public function confirmEmailSender($id, $activationKey, $postId, $email) {
         $subject = isset($this->optionsSerialized->phrases['wc_confirm_email_subject']) ? $this->optionsSerialized->phrases['wc_confirm_email_subject'] : __('Subscribe Confirmation', 'wpdiscuz');
         $message = isset($this->optionsSerialized->phrases['wc_confirm_email_message']) ? $this->optionsSerialized->phrases['wc_confirm_email_message'] : __('Hi, <br/> You just subscribed for new comments on our website. This means you will receive an email when new comments are posted according to subscription option you\'ve chosen. <br/> To activate, click confirm below. If you believe this is an error, ignore this message and we\'ll never bother you again.', 'wpdiscuz');
-        $confirm_url = $this->dbManager->confirmLink($postId, $email);
+        $confirm_url = $this->dbManager->confirmLink($id, $activationKey, $postId);
         $unsubscribe_url = $this->dbManager->unsubscribeLink($postId, $email);
         $post_permalink = get_permalink($postId);
         $message .= "<br/><br/><a href='$post_permalink'>$post_permalink</a>";
@@ -176,6 +176,23 @@ class WpdiscuzEmailHelper {
                     if ($parent_comment_email != $email) {
                         $this->wc_notify_on_all_new_reply($post_id, $comment_id, $parent_comment_email);
                     }
+                }
+            }
+        }
+    }
+
+    public function notificationFromDashboard($comment_ID, $comment_approved, $commentdata) {
+        $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+        if ($comment_approved == 1 && $referer && (strpos($referer, 'edit-comments.php') !== false)) {
+            $postId = $commentdata['comment_post_ID'];
+            $email = $commentdata['comment_author_email'];
+            $parentComment = get_comment($commentdata['comment_parent']);
+            $this->notifyPostSubscribers($postId, $comment_ID, $email);
+            if ($parentComment) {
+                $parentCommentEmail = $parentComment->comment_author_email;
+                if ($parentCommentEmail != $email) {
+                    $this->notifyAllCommentSubscribers($postId, $comment_ID, $email);
+                    $this->notifyCommentSubscribers($parentComment->comment_ID, $comment_ID, $email);
                 }
             }
         }

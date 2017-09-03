@@ -202,7 +202,7 @@ class WpdiscuzDBManager {
         if ($args['status'] != 'all') {
             $approved = " AND `comment_approved` = 1 ";
         }
-        $sqlCommentIds = $this->db->prepare("SELECT `comment_ID` FROM `" . $this->dbprefix . "comments` WHERE `comment_post_ID` = %d AND `comment_ID` > %d AND `comment_author_email` != %s ".$approved." ORDER BY `comment_date_gmt` ASC;", $args['post_id'], $loadLastCommentId, $email);
+        $sqlCommentIds = $this->db->prepare("SELECT `comment_ID` FROM `" . $this->dbprefix . "comments` WHERE `comment_post_ID` = %d AND `comment_ID` > %d AND `comment_author_email` != %s " . $approved . " ORDER BY `comment_date_gmt` ASC;", $args['post_id'], $loadLastCommentId, $email);
         return $this->db->get_col($sqlCommentIds);
     }
 
@@ -409,7 +409,7 @@ class WpdiscuzDBManager {
     }
 
     /**
-     * delete comment thread subscribtions if new subscribtion type is post
+     * delete comment thread subscriptions if new subscription type is post
      */
     public function deleteCommentNotifications($post_id, $email) {
         $sql_delete_comment_notifications = $this->db->prepare("DELETE FROM `" . $this->emailNotification . "` WHERE `subscribtion_type` != %s AND `post_id` = %d AND `email` LIKE %s;", WpdiscuzCore::SUBSCRIPTION_POST, $post_id, $email);
@@ -432,17 +432,15 @@ class WpdiscuzDBManager {
     /**
      * generate confirm link
      */
-    public function confirmLink($postID, $email) {
-        global $wp_rewrite;
-        $sql_subscriber_data = $this->db->prepare("SELECT `id`, `activation_key` FROM `" . $this->emailNotification . "` WHERE `post_id` = %d AND `email` LIKE %s ", $postID, $email);
-        $wc_confirm = $this->db->get_row($sql_subscriber_data, ARRAY_A);
+    public function confirmLink($id, $activationKey, $postID) {
+        global $wp_rewrite;        
         $wc_confirm_link = !$wp_rewrite->using_permalinks() ? get_permalink($postID) . "&" : get_permalink($postID) . "?";
-        $wc_confirm_link .= "subscribeAnchor&wpdiscuzConfirmID=" . $wc_confirm['id'] . "&wpdiscuzConfirmKey=" . $wc_confirm['activation_key'] . '&wpDiscuzComfirm=yes&#wc_unsubscribe_message';
+        $wc_confirm_link .= "subscribeAnchor&wpdiscuzConfirmID=$id&wpdiscuzConfirmKey=$activationKey&wpDiscuzComfirm=yes&#wc_unsubscribe_message";
         return $wc_confirm_link;
     }
 
     /**
-     * Confirm  post or comment subscribtion
+     * Confirm  post or comment subscription
      */
     public function notificationConfirm($subscribe_id, $key) {
         $sql_confirm = $this->db->prepare("UPDATE `" . $this->emailNotification . "` SET `confirm` = 1 WHERE `id` = %d AND `activation_key` LIKE %s;", $subscribe_id, $key);
@@ -450,7 +448,7 @@ class WpdiscuzDBManager {
     }
 
     /**
-     * delete subscribtion
+     * delete subscription
      */
     public function unsubscribe($id, $activation_key) {
         $sql_unsubscribe = $this->db->prepare("DELETE FROM `" . $this->emailNotification . "` WHERE `id` = %d AND `activation_key` LIKE %s", $id, $activation_key);

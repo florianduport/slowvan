@@ -286,13 +286,13 @@ jQuery(document).ready(function ($) {
                             }
                         }
                         if (obj.held_moderate == 1) {
-                            var moderateCommentTime = 7 * 24 * 60 * 60;
+                            var moderateCommentTime = 30 * 24 * 60 * 60;
                             var moderateComments = '';
-                            if (Cookies.get('wc_moderate_comments')) {
-                                moderateComments = Cookies.get('wc_moderate_comments');
+                            if (Cookies.get('wc_moderate_comments_' + wpdiscuzPostId)) {
+                                moderateComments = Cookies.get('wc_moderate_comments_' + wpdiscuzPostId);
                             }
                             moderateComments += obj.new_comment_id + ',';
-                            Cookies.set('wc_moderate_comments', moderateComments, {expires: moderateCommentTime, path: location.href});
+                            Cookies.set('wc_moderate_comments_' + wpdiscuzPostId, moderateComments, {expires: moderateCommentTime, path: '/'});
                         }
                         notifySubscribers(obj);
                         wpdiscuzRedirect(obj);
@@ -401,12 +401,16 @@ jQuery(document).ready(function ($) {
         if (storeCommenterData == null) {
             Cookies.set('wc_author_email', email);
             Cookies.set('wc_author_name', name);
-            Cookies.set('wc_author_website', $('.wc_website', wcForm).val());
+            if ($('.wc_website', wcForm).length) {
+                Cookies.set('wc_author_website', $('.wc_website', wcForm).val());
+            }
         } else {
             storeCommenterData = parseInt(storeCommenterData);
             Cookies.set('wc_author_email', email, {expires: storeCommenterData, path: '/'});
             Cookies.set('wc_author_name', name, {expires: storeCommenterData, path: '/'});
-            Cookies.set('wc_author_website', $('.wc_website', wcForm).val(), {expires: storeCommenterData, path: '/'});
+            if ($('.wc_website', wcForm).length) {
+                Cookies.set('wc_author_website', $('.wc_website', wcForm).val(), {expires: storeCommenterData, path: '/'});
+            }
         }
     }
 //============================== ADD COMMENT FUNCTION ============================== // 
@@ -463,6 +467,7 @@ jQuery(document).ready(function ($) {
         if (editCommentForm[0].checkValidity()) {
             var data = new FormData();
             data.append('action', 'saveEditedComment');
+            data.append('wpdiscuz_unique_id', uniqueID);
             data.append('commentId', commentID);
             var inputs = $(":input", editCommentForm);
             inputs.each(function () {

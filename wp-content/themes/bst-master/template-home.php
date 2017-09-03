@@ -37,17 +37,6 @@ $mypostsOTRA = get_posts( $argsOTRA );
       </div>
       <?php endforeach; ?>
 
-      <!--<div class="item" style="background-image: url('https://www.novo-monde.com/app/uploads/2017/06/DSC06597.jpg')">
-        <div class="overlay-slider"></div>
-        <div>
-          <h1>VOYAGE QUELQUE PART</h1>
-          <span>
-            <p>Si vous vous demandez avec quoi on part pour marcher 4-5 semaines à travers la Suisse, on vous dévoile tout le contenu de notre sac à dos dans cet article :)</p>
-            <p>04/08/2017 - 0 commentaires</p>
-          </span>
-        </div>
-      </div>-->
-
     </div>
 
     <!-- Left and right controls -->
