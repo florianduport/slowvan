@@ -125,4 +125,7 @@ p{
 		margin-left: 0%;
 		width: 100%;
 	}
+	.null-instagram-feed{
+		padding-left: unset;
+	}
 }

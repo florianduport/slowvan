@@ -3,12 +3,11 @@
 <head>
 	<title><?php wp_title('•', true, 'right'); ?></title>
 	<meta charset="utf-8">
+	<link rel="icon" href="/wp-content/uploads/2017/07/ico.png" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="p:domain_verify" content="973e4d21ac8443f5b38541fb169752f2"/>
 	<meta name="google-site-verification" content="6l22c7hnWSqqHLsDC3VT1ZyZfULpW1SOGCHU-YyMjoE" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<?php wp_head(); ?>
 	<?php
 		$category = get_category(get_query_var('cat'));

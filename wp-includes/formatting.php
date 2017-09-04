@@ -5061,7 +5061,7 @@ function _print_emoji_detection_script() {
 	} else {
 		$settings['source'] = array(
 			/** This filter is documented in wp-includes/class.wp-scripts.php */
-			'concatemoji' => apply_filters( 'script_loader_src', includes_url( "js/wp-emoji-release.min.js?$version" ), 'concatemoji' ),
+			/*'concatemoji' => apply_filters( 'script_loader_src', includes_url( "js/wp-emoji-release.min.js?$version" ), 'concatemoji' ),*/
 		);
 
 		/*
