@@ -1,4 +1,4 @@
-<footer class="container site-footer">
+<footer class="site-footer">
   <br/><br/><br/>
 	<div class="row">
     <?php dynamic_sidebar('footer-widget-area'); ?>
@@ -11,7 +11,7 @@
         - <a href="https://fr.pinterest.com/theslowvan/" target="_blank" rel="nofollow"><img src="<?php echo content_url(); ?>/uploads/2017/08/social-1_logo-pinterest.svg"/></a>
       </p>
       <p>Fait avec <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> à Bordeaux par Cindy et Florian</p>
-      <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a> - <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ) ) ?>">Nous contacter</a> - <a href="http://slowvan.com/a-propos-de-nous/">A propos</a> - <a href="http://slowvan.com/en/">English version</a></p>
+      <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a> - <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ) ) ?>">Nous contacter</a> - <a href="/fr/others/a-propos-de-nous/">A propos</a> <!-- - <a href="http://slowvan.com/en/">English version</a>--></p>
     </div>
   </div>
 </footer>

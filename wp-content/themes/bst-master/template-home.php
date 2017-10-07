@@ -8,18 +8,21 @@
 ?>
 
 <div id="global-body">
-
+<h4>Decouvrez nos derniers articles</h4>
 <?php
 global $postOTRA;
 $argsOTRA = array( 'category_name' => 'Roadtrip' );
 $mypostsOTRA = get_posts( $argsOTRA );
 ?>
+<!--
+  <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
 
-  <div id="carouselOTRA" class="carousel slide" data-ride="carousel" data-interval="10000">
-
-    <div class="carousel-inner">
+    <div class="carousel-inner"> -->
       <?php $isFirst = true; foreach( $mypostsOTRA as $postOTRA ) :  setup_postdata($postOTRA); ?>
-      <div class="item <?php if($isFirst){ echo("active"); $isFirst = false; }?>" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
+        <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
+
+          <div class="carousel-inner">
+      <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
         <div class="overlay-slider"></div>
         <div>
           <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
@@ -34,13 +37,13 @@ $mypostsOTRA = get_posts( $argsOTRA );
             </span>
           </a>
         </div>
-      </div>
+      </div></div></div>
       <?php endforeach; ?>
 
-    </div>
+    <!--</div>
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#carouselOTRA" data-slide="prev">
+    <!--<a class="left carousel-control" href="#carouselOTRA" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
@@ -49,7 +52,7 @@ $mypostsOTRA = get_posts( $argsOTRA );
       <span class="sr-only">Next</span>
     </a>
 
-  </div>
+  </div>-->
 
 <?php
 global $postEBL;
@@ -113,17 +116,18 @@ setup_postdata($postEBL1);
       </div>
     </div>
   </div>-->
-
+<h4>Et puis aussi</h4>
 <?php
 global $postSL;
 $argsSL = array( 'category_name' => 'Slow living' );
 $mypostsSL = get_posts( $argsSL );
 ?>
 
-  <div id="carouselSL" class="carousel slide" data-ride="carousel" data-interval="10000">
-    <div class="carousel-inner">
+
       <?php $isFirst = true; foreach( $mypostsSL as $postSL ) :  setup_postdata($postSL); ?>
-          <div class="item <?php if($isFirst){ echo("active"); $isFirst = false; }?>" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postSL->ID)) ?>')">
+        <div class="carousel slide" data-ride="carousel" data-interval="10000">
+          <div class="carousel-inner">
+          <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postSL->ID)) ?>')">
             <div class="overlay-slider"></div>
             <div>
               <a href="<?php echo get_post_permalink($postSL->ID); ?>">
@@ -138,19 +142,10 @@ $mypostsSL = get_posts( $argsSL );
                 </span>
               </a>
             </div>
-          </div>
+          </div>    </div>    </div>
       <?php endforeach; ?>
-    </div>
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#carouselSL" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carouselSL" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+
+
 
 
 </div>

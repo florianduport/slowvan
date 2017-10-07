@@ -69,6 +69,10 @@ p{
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
+.site-footer{
+  padding-left: 30px;
+  padding-right: 30px;
+}
 @media(min-width: 1150px){
 	#global-body.smallCat{
 		max-width: 45%;
@@ -125,7 +129,16 @@ p{
 		margin-left: 0%;
 		width: 100%;
 	}
+	#global-body{
+		padding-top: 30px;
+	}
+	.navbar:not(.undernavbar) + div{
+			margin-top: 90px !important;
+	}
+	.null-instagram-feed h4{
+		text-align: center;
+	}
 	.null-instagram-feed{
-		padding-left: unset;
+		padding: unset;
 	}
 }

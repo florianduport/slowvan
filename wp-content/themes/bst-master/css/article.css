@@ -3,6 +3,9 @@ article {
   background: #fff;
   margin-top: -200px;
 }
+article p{
+  text-align: justify;
+}
 article img{
   max-width: 100% !important;
   height: auto;
@@ -26,4 +29,12 @@ article:not(img){
   color: #fff;
   font-weight: bolder;
   font-size: 3em;
+}
+@media (max-width: 700px){
+  .articlethumbnail{
+    padding-top: 70px !important;
+  }
+  .articlethumbnail h1{
+    font-size: 2em !important;
+  }
 }

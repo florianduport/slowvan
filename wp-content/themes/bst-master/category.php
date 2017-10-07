@@ -8,7 +8,7 @@ $category_id = $category->cat_ID;
 $isEBL = $category_id == 3;
 
 if(cat_is_ancestor_of(2, $category_id) or $category_id == 2) : ?>
-<nav class="navbar navbar-default navbar-static-top undernavbar">
+<!--<nav class="navbar navbar-default navbar-static-top undernavbar">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -36,7 +36,7 @@ if(cat_is_ancestor_of(2, $category_id) or $category_id == 2) : ?>
 							</a>
 						</li>
 				</ul>
-			</div>
+			</div>-->
 <?php endif; ?>
         <?php
            /*wp_nav_menu( array(
@@ -53,30 +53,29 @@ if(cat_is_ancestor_of(2, $category_id) or $category_id == 2) : ?>
 
 <div id="global-body" class="<?php if($isEBL){ echo("smallCat"); } ?>">
 
-  <div id="carouselOTRA" class="carousel slide" data-ride="carousel" data-interval="10000">
-    <div class="carousel-inner">
+
       <?php if(have_posts()): while(have_posts()): the_post();?>
 
-        <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url(get_the_ID())) ?>')">
-          <div class="overlay-slider"></div>
-          <div>
-            <a href="<?php echo get_post_permalink(get_the_ID()); ?>">
-              <h1><?php the_title(); ?></h1>
-              <span>
-                <p><?php the_excerpt(); ?></p>
-                <p class="noBold">
-                  <span class="glyphicon glyphicon-calendar"></span> <?php echo date("d/m/Y", strtotime(the_date())) ?> &nbsp;&nbsp;&nbsp;
-                  <span class="glyphicon glyphicon-user"></span> par <?php echo get_author_name(the_author()) ?> &nbsp;&nbsp;&nbsp;
-                  <span class="glyphicon glyphicon-comment"></span> <?php echo(comments_number()) ?> commentaire<?php if(comments_number() > 1) echo("s"); ?>
-                </p>
-              </span>
-            </a>
-          </div>
-        </div>
+        <div class="carousel slide" data-ride="carousel" data-interval="10000">
+          <div class="carousel-inner">
+          <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postSL->ID)) ?>')">
+            <div class="overlay-slider"></div>
+            <div>
+              <a href="<?php echo get_post_permalink($postSL->ID); ?>">
+                <h1><?php echo(the_title()); ?></h1>
+                <span>
+                  <p><?php the_excerpt(); ?></p>
+                  <p class="noBold">
+                    <span class="glyphicon glyphicon-calendar"></span> <?php echo date("d/m/Y", strtotime($postSL->post_date)) ?> &nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-user"></span> par <?php echo get_author_name($postSL->post_author) ?> &nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-comment"></span> <?php echo($postSL->comment_count) ?> commentaire<?php if($postSL->comment_count > 1) echo("s"); ?>
+                  </p>
+                </span>
+              </a>
+            </div>
+          </div>    </div>    </div>
 
       <?php endwhile; ?>
-    </div>
-  </div>
 
   <?php if ( function_exists('bst_pagination') ) { bst_pagination(); } else if ( is_paged() ) { ?>
     <ul class="pagination">

@@ -1,10 +1,3 @@
-.undernavbar{
-  background-color: #e7e7e7;
-}
-.undernavbar #menu-menu-principal{
-  float: none !important;
-  margin-left: 30%;
-}
 .carousel .item{
     height: 500px;
 }
@@ -21,6 +14,7 @@
 }
 .carousel{
   box-shadow: 5px 5px 5px #888888;
+  margin-bottom: 30px;
 }
 .carousel-control{
   width: 5%;
@@ -32,13 +26,17 @@
 .carousel-control.left, .carousel-control.right {
     background-image: none
 }
-
+#global-body h4{
+  font-family: "Market";
+}
 .carousel .item h1{
   font-size: 2.875em;
   text-shadow: 1px 1px #f1f1f1;
-  font-weight: 800;
   text-transform: uppercase;
   font-family: "Market";
+}
+#carouselSL{
+  border-top: 5px solid #fff;
 }
 #carouselOTRA .item > div,
 #carouselSL .item > div
@@ -77,7 +75,8 @@
   margin-left: 90%;
   height: 100%;
   width: 10%;
-  background:repeating-linear-gradient(-45deg, #c92941, #c92941 5px, white 5px, white 10px);
+  background:#fff;
+  border: 1px solid red;
 }
 .moreInfoItem span{
   margin-top: 100%;
@@ -90,7 +89,6 @@
   width: 72%;
   margin-left: 15%;
   font-size: 16px;
-  font-weight: bold;
 }
 .carousel .item a{
   text-decoration: none;
@@ -110,10 +108,11 @@
   .overlay-slider{
     height: 60%;
   }
-  #carouselOTRA .item h1{
-    font-size: 2.6em;
+  .carousel .item h1{
+    font-size: 1.6em;
     padding-left: 10px;
     padding-right: 10px;
+    text-align: center;
   }
   #carouselEBL .item{
     height: 1500px;
@@ -147,7 +146,12 @@
 }
 @media (max-width: 700px) {
   .overlay-slider{
-    height: 35%;
+    height: 100%;
+  }
+  .carousel .item > div{
+    bottom: auto !important;
+    padding-top: 17%;
+    width: 100%;
   }
   .carousel .item p{
     display: none;
@@ -161,5 +165,31 @@
   }
   .moreInfoItem img{
     margin-top: 45% !important;
+  }
+  .item {
+    background-position: center;
+  }
+  .carousel-inner > .item {
+    min-height: 200px;    /* Set slide height here */
+    max-height: 200px;
+  }
+  #global-body h4,
+  .null-instagram-feed h4{
+		text-align: center;
+	}
+  .null-instagram-feed{
+    padding: unset;
+  }
+	#global-body{
+		padding-top: 30px;
+	}
+}
+@media (min-width: 1170px){
+
+  #global-body{
+  	padding-left: 100px;
+  	padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
