@@ -38,3 +38,9 @@ article:not(img){
     font-size: 2em !important;
   }
 }
+@media (min-width: 1170px){
+  .articlethumbnail h1{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}

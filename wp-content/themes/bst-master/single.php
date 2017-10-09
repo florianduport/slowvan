@@ -2,7 +2,7 @@
 
 <div id="global-body">
 
-  <div class="articlethumbnail" style="background-image: url('<?php echo(get_the_post_thumbnail_url(get_the_ID())) ?>');">
+  <div class="articlethumbnail" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('<?php echo(get_the_post_thumbnail_url(get_the_ID())) ?>');">
     <h1><?php the_title()?></h1>
   </div>
   <div class="container">
