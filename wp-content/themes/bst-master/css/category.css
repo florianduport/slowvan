@@ -30,7 +30,7 @@
   font-family: "Market";
 }
 .carousel .item h1{
-  font-size: 2.875em;
+  font-size: 2em;
   text-shadow: 1px 1px #f1f1f1;
   text-transform: uppercase;
   font-family: "Market";
@@ -88,7 +88,7 @@
 .carousel .item p{
   width: 72%;
   margin-left: 15%;
-  font-size: 16px;
+  font-size: 15px;
 }
 .carousel .item a{
   text-decoration: none;
