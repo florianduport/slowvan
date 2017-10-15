@@ -24,6 +24,7 @@
 }
 #global-body{
   background: #f1f1f1;
+	background-image: url("/slowvan/wp-content/uploads/2017/07/backgroundGlobalBody2.png");
 }
 .navbar-brand img{
   height: 50px;
@@ -72,6 +73,8 @@ p{
 .site-footer{
   padding-left: 30px;
   padding-right: 30px;
+	box-shadow: 0px 0px 1px 1px #cccccc;
+	border: 1px solid #e7e7e7;
 }
 @media(min-width: 1150px){
 	#global-body.smallCat{
