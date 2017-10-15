@@ -119,7 +119,7 @@ $mypostsSL = get_posts( $argsSL );
         </div>
       </div>
 
-      <?php $isFirst = true; foreach( array_slice(array_merge($mypostsOTRA, $mypostsSL),1) as $postOTRA ) :  setup_postdata($postOTRA); ?>
+      <?php $isFirst = true; foreach( array_merge(array_slice($mypostsOTRA,2), $mypostsSL) as $postOTRA ) :  setup_postdata($postOTRA); ?>
         <div class="col-md-6 greyZoneMainDiv">
             <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
               <div class="carousel-inner">
@@ -147,6 +147,7 @@ $mypostsSL = get_posts( $argsSL );
   </div>
 </div>
 
+<?php if($mypostsEBL != null): ?>
 <div class="kitchenZone">
   <h4 class="titleZone"><i class="glyphicon glyphicon-cutlery"></i> Qu'est-ce qu'on mange ce soir dans le van ?</h4>
   <div class="kitchenZoneInner">
@@ -169,5 +170,6 @@ $mypostsSL = get_posts( $argsSL );
     </div>
   </div>
 </div>
+<?php endif; ?>
 
 <?php get_template_part('includes/footer'); ?>

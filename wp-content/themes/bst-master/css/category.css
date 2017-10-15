@@ -7,14 +7,126 @@
   background-repeat:   no-repeat;
   background-position: center;
 }
+.greyZone {
+  background: linear-gradient(#3d5268,#1d2731 90%);
+  width: 100%;
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  font-family: "Market";
+}
+.newsletter{
+  background: #f1f1f1;
+  color: black;
+  padding: 20px;
+  height: 340px;
+}
+.stamp {
+	width: 640px;
+	height: 360px;
+	display: inline-block;
+	padding: 10px;
+	background: white;
+	position: relative;
+
+	/*The stamp cutout will be created using crisp radial gradients*/
+	background: radial-gradient(
+		transparent 0px,
+		transparent 4px,
+		white 4px,
+		white
+	);
+	/*reducing the gradient size*/
+	background-size: 20px 20px;
+	/*Offset to move the holes to the edge*/
+	background-position: -10px -10px;
+}
+.stamp:after {
+	content: '';
+	position: absolute;
+	/*We can shrink the pseudo element here to hide the shadow edges*/
+	left: 5px; top: 5px; right: 5px; bottom: 5px;
+	/*Shadow - doesn't look good because of the stamp cutout. We can still move this into another pseudo element behind the .stamp main element*/
+	box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+	/*pushing it back*/
+	z-index: -1;
+}
+/*Some text*/
+.stamp:before {
+	content: '';
+	position: absolute;
+	bottom: 0; left: 0;
+	font: bold 24px arial;
+	color: white;
+	opacity: 0.75;
+	line-height: 100%;
+	padding: 20px;
+}
+.newsletterBtn{
+  width: 100%;
+  text-align: center;
+}
+.newsletter h2{
+  margin-top: 0px;
+}
+.titleZone {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.greyZoneInner > .row{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.greyZoneInner{
+  border: 3px dotted snow;
+  border-radius: 10px;
+  padding: 30px;
+  padding-top: 0px;
+}
+.greyZoneMainDiv{
+  padding-top: 30px;
+}
+.greyZone .carousel,
+.greyZone .carousel-inner,
+.greyZone .carousel .item.active{
+  height: 360px;
+  box-shadow: none;
+}
+.kitchenZone{
+  width: 100%;
+  background: url("/wp-content/uploads/2017/07/backgroundFood2.png");
+  font-family: "Market";
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+.kitchenZoneMainDiv{
+  width: 320px;
+  height: 320px;
+  margin: auto;
+}
+.kitchenZoneMainDiv a,
+.kitchenZoneMainDiv h1{
+  color: #df314a;
+  font-size: 18px;
+}
+.kitchenZoneMainDiv .carousel,
+.kitchenZoneMainDiv .carousel-inner{
+  height: 320px;
+}
+
 .item img {
     top: 0;
     left: 0;
     height:500px;
 }
 .carousel{
-  box-shadow: 5px 5px 5px #888888;
-  margin-bottom: 30px;
+  box-shadow: 1px 1px 1px #888888;
+  margin-top: 20px;
 }
 .carousel-control{
   width: 5%;
@@ -187,9 +299,9 @@
 @media (min-width: 1170px){
 
   #global-body{
-  	padding-left: 100px;
-  	padding-right: 100px;
+  	padding-left: 300px;
+  	padding-right: 300px;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 45px;
   }
 }

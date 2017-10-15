@@ -97,7 +97,7 @@
 }
 .kitchenZone{
   width: 100%;
-  background: url("/slowvan/wp-content/uploads/2017/07/backgroundFood2.png");
+  background: url("/wp-content/uploads/2017/07/backgroundFood2.png");
   font-family: "Market";
   padding-left: 250px;
   padding-right: 250px;
@@ -256,6 +256,16 @@
   }
 }
 @media (max-width: 700px) {
+  .stamp{
+    display: none;
+  }
+  .greyZone{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .greyZone .carousel, .greyZone .carousel-inner, .greyZone .carousel .item.active{
+    height: auto;
+  }
   .overlay-slider{
     height: 100%;
   }
