@@ -41,7 +41,7 @@ $mypostsOTRA = get_posts( $argsOTRA );
 
 <?php
 global $postEBL;
-$argsEBL = array( 'category_name' => 'Recettes' );
+$argsEBL = array( 'category_name' => 'el-boco-loco' );
 $mypostsEBL = get_posts( $argsEBL );
 $postEBL0 = $mypostsEBL[0];
 //$mypostsEBL[0] = $mypostsOTRA[0];
@@ -65,7 +65,16 @@ $mypostsSL = get_posts( $argsSL );
     <div class="row">
 
       <div class="col-md-6 greyZoneMainDiv">
-        <?php $isFirst = true; $postOTRA = $mypostsOTRA[1]; setup_postdata($postOTRA); ?>
+        <?php $isFirst = true; $postOTRA = $mypostsOTRA[1]; setup_postdata($postOTRA);
+        $custom_fields = get_post_custom($postOTRA->ID);
+        $my_custom_field = $custom_fields['secondImage'];
+        $postThumbnailUrl = get_the_post_thumbnail_url($postOTRA->ID);
+        foreach ( $my_custom_field as $key => $value ) {
+          if($value != null && $value != ""){
+            $postThumbnailUrl = $value;
+          }
+        }
+        ?>
           <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
             <div class="carousel-inner">
               <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
@@ -119,11 +128,20 @@ $mypostsSL = get_posts( $argsSL );
         </div>
       </div>
 
-      <?php $isFirst = true; foreach( array_merge(array_slice($mypostsOTRA,2), $mypostsSL) as $postOTRA ) :  setup_postdata($postOTRA); ?>
+      <?php $isFirst = true; foreach( array_merge(array_slice($mypostsOTRA,2), $mypostsSL) as $postOTRA ) :  setup_postdata($postOTRA);
+      $custom_fields = get_post_custom($postOTRA->ID);
+      $my_custom_field = $custom_fields['secondImage'];
+      $postThumbnailUrl = get_the_post_thumbnail_url($postOTRA->ID);
+      foreach ( $my_custom_field as $key => $value ) {
+        if($value != null && $value != ""){
+          $postThumbnailUrl = $value;
+        }
+      }
+      ?>
         <div class="col-md-6 greyZoneMainDiv">
             <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
               <div class="carousel-inner">
-                <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
+                <div class="item active" style="background-image: url('<?php echo($postThumbnailUrl) ?>')">
                   <div class="overlay-slider"></div>
                   <div>
                     <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
