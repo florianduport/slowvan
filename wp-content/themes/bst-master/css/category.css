@@ -215,7 +215,10 @@
   color: #e1e1e1;
   font-size: 12px !important;
 }
-
+#global-body{
+  padding-left: 300px;
+  padding-right: 300px;
+}
 @media (max-width: 1150px) {
   .overlay-slider{
     height: 60%;
@@ -254,6 +257,20 @@
   .moreInfoItem span{
     margin-top: 200px;
     margin-left: 45%;
+  }
+}
+@media(max-width: 1650px){
+  #global-body{
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .greyZone{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  .stamp{
+    width: 101%;
+    background-position: -8px -10px;
   }
 }
 @media (max-width: 700px) {
@@ -299,8 +316,6 @@
 @media (min-width: 1170px){
 
   #global-body{
-  	padding-left: 300px;
-  	padding-right: 300px;
     padding-top: 50px;
     padding-bottom: 45px;
   }

@@ -25,7 +25,7 @@ $mypostsOTRA = get_posts( $argsOTRA );
       <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
         <div class="overlay-slider"></div>
         <div>
-          <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
+          <a href="<?php echo get_permalink($postOTRA->ID); ?>">
             <h1><?php echo($postOTRA->post_title); ?></h1>
             <span>
               <p><?php the_excerpt(); ?></p>
@@ -80,7 +80,7 @@ $mypostsSL = get_posts( $argsSL );
               <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
                 <div class="overlay-slider"></div>
                 <div>
-                  <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
+                  <a href="<?php echo get_permalink($postOTRA->ID); ?>">
                     <h1><?php echo($postOTRA->post_title); ?></h1>
                     <span>
                       <p class="noBold">
@@ -144,7 +144,7 @@ $mypostsSL = get_posts( $argsSL );
                 <div class="item active" style="background-image: url('<?php echo($postThumbnailUrl) ?>')">
                   <div class="overlay-slider"></div>
                   <div>
-                    <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
+                    <a href="<?php echo get_permalink($postOTRA->ID); ?>">
                       <h1><?php echo($postOTRA->post_title); ?></h1>
                       <span>
                         <p class="noBold">
@@ -179,7 +179,7 @@ $mypostsSL = get_posts( $argsSL );
               </div>
           </div>
           <div>
-            <a href="<?php echo get_post_permalink($postOTRA->ID); ?>">
+            <a href="<?php echo get_permalink($postOTRA->ID); ?>">
               <h1><?php echo($postOTRA->post_title); ?></h1>
             </a>
           </div>

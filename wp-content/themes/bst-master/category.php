@@ -58,17 +58,17 @@ if(cat_is_ancestor_of(2, $category_id) or $category_id == 2) : ?>
 
         <div class="carousel slide" data-ride="carousel" data-interval="10000">
           <div class="carousel-inner">
-          <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postSL->ID)) ?>')">
+          <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url()) ?>')">
             <div class="overlay-slider"></div>
             <div>
-              <a href="<?php echo get_post_permalink($postSL->ID); ?>">
+              <a href="<?php echo get_permalink(); ?>">
                 <h1><?php echo(the_title()); ?></h1>
                 <span>
                   <p><?php the_excerpt(); ?></p>
                   <p class="noBold">
-                    <span class="glyphicon glyphicon-calendar"></span> <?php echo date("d/m/Y", strtotime($postSL->post_date)) ?> &nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-calendar"></span> <?php the_time("d/m/Y") ?> &nbsp;&nbsp;&nbsp;
                     <span class="glyphicon glyphicon-user"></span> par <?php echo get_author_name($postSL->post_author) ?> &nbsp;&nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-comment"></span> <?php echo($postSL->comment_count) ?> commentaire<?php if($postSL->comment_count > 1) echo("s"); ?>
+                    <span class="glyphicon glyphicon-comment"></span> <?php echo( get_comments_number() );  ?> commentaire<?php if(get_comments_number() > 1) echo("s"); ?>
                   </p>
                 </span>
               </a>
