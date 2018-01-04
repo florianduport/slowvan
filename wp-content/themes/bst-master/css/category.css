@@ -309,8 +309,10 @@
   .null-instagram-feed{
     padding: unset;
   }
-	#global-body{
+  #global-body{
 		padding-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
 	}
 }
 @media (min-width: 1170px){

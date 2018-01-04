@@ -8,7 +8,7 @@
 ?>
 
 <div id="global-body">
-<h4 class="titleZone">Decouvrez notre dernier article ! <i class="glyphicon glyphicon-time"></i> </h4>
+<h4 class="titleZone">Decouvrez notre dernier voyage ! <i class="glyphicon glyphicon-time"></i> </h4>
 <?php
 global $postOTRA;
 $argsOTRA = array( 'category_name' => 'Roadtrip' );
@@ -128,7 +128,7 @@ $mypostsSL = get_posts( $argsSL );
         </div>
       </div>
 
-      <?php $isFirst = true; foreach( array_merge(array_slice($mypostsOTRA,2), $mypostsSL) as $postOTRA ) :  setup_postdata($postOTRA);
+      <?php $isFirst = true; foreach( array_slice($mypostsOTRA,2) as $postOTRA ) :  setup_postdata($postOTRA);
       $custom_fields = get_post_custom($postOTRA->ID);
       $my_custom_field = $custom_fields['secondImage'];
       $postThumbnailUrl = get_the_post_thumbnail_url($postOTRA->ID);
@@ -174,8 +174,10 @@ $mypostsSL = get_posts( $argsSL );
         <div class="kitchenZoneMainDiv">
             <div id="carouselOTRA" class="carousel" data-ride="carousel" data-interval="10000">
               <div class="carousel-inner">
-                <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
-                </div>
+                <a href="<?php echo get_permalink($postOTRA->ID); ?>">
+                  <div class="item active" style="background-image: url('<?php echo(get_the_post_thumbnail_url($postOTRA->ID)) ?>')">
+                  </div>
+                </a>
               </div>
           </div>
           <div>

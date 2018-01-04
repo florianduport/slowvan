@@ -124,6 +124,9 @@ p{
     .collapse.in{
         display:block !important;
     }
+		ul.instagram-pics.instagram-size-small li:last-child{
+				display: none !important;
+		}
 }
 
 @media (max-width: 700px) {
@@ -143,5 +146,13 @@ p{
 	}
 	.null-instagram-feed{
 		padding: unset;
+	}
+}
+@media (min-width: 700px) {
+	.null-instagram-feed{
+		width: auto !important;
+		padding-left: 90px;
+		height: 370px;
+		overflow: hidden;
 	}
 }
